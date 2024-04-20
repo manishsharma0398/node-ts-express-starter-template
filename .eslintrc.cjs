@@ -7,15 +7,17 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2022,
+    ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
   },
   extends: [
     'airbnb-base',
     'airbnb-typescript/base',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
   plugins: ['import', '@typescript-eslint', 'prettier'],
   rules: {
     'import/extensions': [
@@ -35,6 +37,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-var': 'error',
     semi: 'error',
     indent: ['error', 2, { SwitchCase: 1 }],

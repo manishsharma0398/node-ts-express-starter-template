@@ -6,22 +6,31 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "rm -rf ./dist && npx tsc && tsc-alias",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "commit": "cz",
+    "prepare": "husky install",
+    "prettify": "prettier \"**/*.+(js|json|yml|yaml|less|ts|md|mdx|graphql|vue)\" --write",
+    "lint": "eslint . --ext ts,tsx --color --report-unused-disable-directives --max-warnings 0"
   },
   "keywords": [],
   "author": "Manish Sharma<manish.sharma0398@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
@@ -30,7 +39,19 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "commitizen": "^4.3.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json}": [
+      "pnpm prettify",
+      "pnpm lint"
+    ]
   }
 }
