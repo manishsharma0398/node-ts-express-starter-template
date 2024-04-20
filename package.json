@@ -10,8 +10,8 @@
     "dev": "nodemon",
     "commit": "cz",
     "prepare": "husky install",
-    "prettify": "prettier \"**/*.+(js|json|yml|yaml|less|ts|md|mdx|graphql|vue)\" --write",
-    "lint": "eslint . --ext ts,tsx --color --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint --ext .js,.jsx . --color",
+    "pretify": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|mdx|graphql|vue)\" --write"
   },
   "keywords": [],
   "author": "Manish Sharma<manish.sharma0398@gmail.com>",
@@ -50,9 +50,12 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,ts,json}": [
-      "pnpm prettify",
-      "pnpm lint"
-    ]
+    "**/*.{js,ts,json}": "prettier --write",
+    "**/*.ts": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
