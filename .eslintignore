@@ -1,5 +1,10 @@
+.husky
+.nyc_output
+coverage
 dist
 node_modules
+
 .eslintrc.js
 .prettierrc.js
+
 pnpm-lock.yaml
