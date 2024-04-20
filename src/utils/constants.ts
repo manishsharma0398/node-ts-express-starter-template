@@ -1,3 +1,4 @@
-import "dotenv/config";
+import 'dotenv/config';
 
+// eslint-disable-next-line import/prefer-default-export
 export const PORT = process.env?.PORT ?? 8000;
