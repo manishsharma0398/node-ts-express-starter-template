@@ -1,16 +1,16 @@
 import 'dotenv/config';
-import express, { Request, Response, Express } from 'express';
+import chalk from 'chalk';
 
 // utils
 import { PORT } from 'utils/constants';
 
-const app: Express = express();
-
-app.get('/', (req: Request, res: Response) => {
-  return res.status(200).json({ message: 'Home Page' });
-});
+import app from './app';
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`[server]: Server is running at http://localhost:${PORT}`);
+  console.log(
+    chalk.hex('#fffa65')('[server]:'),
+    chalk.hex('#2ed573')('Server is running at'),
+    chalk.hex('#1e90ff').underline.bold(`http://localhost:${PORT}`)
+  );
 });
