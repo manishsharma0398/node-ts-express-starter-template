@@ -17,7 +17,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'global.d.ts'],
   plugins: ['import', '@typescript-eslint', 'prettier'],
   rules: {
     'import/extensions': [
